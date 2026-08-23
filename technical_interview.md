@@ -14,17 +14,19 @@
 
 > When we had the critical printing outage, I started by checking Grafana and Prometheus dashboards for any obvious anomalies in metrics, then logged into the affected server directly to verify the actual state of things — checking whether the relevant service was even running.
 
-> After going through the service logs, I found that the printing issue was happening because we weren't getting a response from the separate printing server that hosts that service. So I logged into that server and checked its status, and found the service had unexpectedly stopped — it turned out this happened after a recent OS patching cycle.
+> After going through the service logs, I found that the printing issue was happening because we weren't getting a response from the separate reporting server that hosts that service. So I logged into that server and checked its status, and found the service had unexpectedly stopped — after doing some research and going through task manager logs it turned out this happened after a recent OS patching cycle.
 
 > Once I identified that, I restarted the service on the printing server, then restarted the dependent application service on the main server as well, which resolved the outage.
 
-> After that, I did a proper RCA and informed both the patching team and the vendor about the issue. This actually turned out to be a recurring problem — it happened again over the next two patching windows, which occur every month on the third Saturday. I collaborated with the stakeholders and explained the actual root cause, walking them through why this kept happening after every patching cycle. Based on that, we came to the conclusion that the printing server should be removed from the regular patching activity going forward, since patching was directly disrupting the service each time. That decision eliminated the recurrence completely.
+> After that, I did a proper RCA and informed both the patching team and the vendor about the issue. This actually turned out to be a recurring problem — it happened again over the next two patching windows, which occur every month on the third Saturday. I collaborated with the stakeholders and explained the actual root cause, walking them through why this kept happening after every patching cycle. Based on that, we came to the conclusion that the reporting server should be removed from the regular patching activity going forward, since patching was directly disrupting the service each time. That decision eliminated the recurrence completely.
 
 **Q3: You automated patch management across 80+ servers with Ansible — what did the playbook actually do, and how did you handle a server where the playbook failed partway through?**
 
 > The playbook handled OS-level patch management across our AWS and Azure servers — applying patch updates on already-existing servers, with no configuration changes involved. So instead of manually logging into 80+ servers one by one to patch each of them, this let us push consistent, standardized patch updates across all of them from one playbook run.
 
 > For servers where the playbook failed partway through, I didn't just rerun it against the whole fleet — I'd first check the Ansible output to see exactly which task failed and on which host, then use --limit to target just that specific server instead of re-running against everything. I'd log into that server directly to check what actually went wrong — sometimes it was a connectivity issue, sometimes a service that didn't come back up cleanly after the patch. Once I fixed the underlying issue, I'd rerun the playbook just for that host to bring it back in line with the rest of the fleet.
+
+ 'ansible-playbook playbook.yml --limit host1'
 
 > We also didn't patch all 80+ servers at once — we ran it in batches across the refinery, so if something did go wrong, it only affected a subset of servers at a time rather than causing a wider another refiner while patching servers. for example we have multiple refinery across USA so each refinery has its own timezone and we make sure to update patches on each server based on the refinery time at midnight. so as an offshore team member its our responsibility to look after the patching as it falls in our shift timings.
 
