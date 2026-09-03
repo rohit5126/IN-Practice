@@ -1,6 +1,6 @@
 ### project explanation
 
-```
+
 "For my final project after a 90-day DevOps challenge, I built and deployed a Spring Boot banking application, but the app itself wasn't really the point — it was a vehicle to build a full production-style platform around it, the way a real infra/platform team would.
 
 I provisioned the AWS EKS cluster with Terraform, and had Terraform also bootstrap ArgoCD into the cluster, so there's zero manual setup after terraform apply. From there, everything is GitOps — I used ArgoCD's App-of-Apps pattern so one root Application manages three child apps: the banking app itself, Envoy Gateway for ingress, and a full Prometheus/Grafana monitoring stack. Adding a new component means adding a file to Git, not clicking through a UI.
@@ -11,7 +11,7 @@ I also handled a couple of things people often skip in personal projects: creden
 
 The whole thing is reproducible from a blank AWS account, too — I wrote Ansible playbooks that turn a brand-new server into a fully tooled jump host in one run."
 
-```
+
 
 
 ### What to have ready for the obvious follow-ups
