@@ -24,7 +24,7 @@ The whole thing is reproducible from a blank AWS account, too — I wrote Ansibl
 
 ### Here's a strong, structured answer — written the way you'd actually say it in an interview, followed by the reasoning so you understand why each point lands well.
 
-```
+
 The exact answer
 
 "At my current scale, a lot of my design choices were reasonable for a demo but wouldn't hold up in real production. A few things I'd change:
@@ -43,4 +43,4 @@ Secrets and compliance: For a real banking system I'd also expect PCI-DSS-style 
 
 Basically — my project proves I understand the shape of a production system. At real scale, the changes are less about new tools and more about defense in depth, blast-radius reduction, and treating failure as the default assumption instead of the exception."
 
-```
+
