@@ -2,12 +2,11 @@
 
 #### interview introduction
 
-> Hi, I’m Rohit. I am a Production-focused infrastructure engineer transitioning into DevOps/SRE, with hands-on experience in automation, observability, containers, Kubernetes, IaC and CI/CD.", primarily working across AWS and Azure environments.
-In my current role at LTIMindtree, I support more than 150 production applications in a 24/7 environment. My responsibilities involve monitoring application health using Grafana and Prometheus, troubleshooting production incidents, managing Linux and cloud infrastructure, and working with application and vendor teams during critical P1 and P2 incidents.
-Over time, I started focusing more on automation and infrastructure. I’ve used Python, Bash and Ansible to automate health checks, troubleshooting workflows, server configuration, patch management and access provisioning across AWS and Azure servers. This helped reduce manual effort and improve consistency in production operations.
-Alongside my professional experience, I’ve been actively transitioning toward DevOps and SRE. I’ve worked hands-on with Docker, Kubernetes, Amazon EKS, Helm, Terraform, GitHub Actions, Jenkins, ArgoCD and DevSecOps tools such as Trivy, SonarQube and Gitleaks.
-For example, in my DevBoard project, I containerized a three-tier application using Docker, deployed it on Kubernetes, implemented GitOps using ArgoCD, and added centralized logging using Loki and Promtail. In another project, I deployed a Spring Boot application on EKS using Helm and built a DevSecOps CI/CD pipeline with security and code-quality gates.
-So, my background is a combination of production support, cloud infrastructure, automation and observability, and I’m now looking to move into a dedicated DevOps/SRE role where I can apply these skills to building and operating reliable, automated infrastructure and deployment platforms.
+> Good morning, and thank you for giving me this opportunity. My name is Rohit Kumar, and I’m currently working as a Technical Support Analyst at LTIMindtree, where I have around 4 years of experience supporting production environments for a US-based client. Over time, I’ve developed strong hands-on experience with Linux, AWS, Docker, Kubernetes, Terraform, Ansible, and monitoring tools such as Prometheus and Grafana.
+
+>Alongside my production-support experience, I’ve been transitioning toward DevOps and have worked on projects involving AWS infrastructure provisioning with Terraform, containerization with Docker, Kubernetes deployments, and CI/CD pipelines using GitHub Actions and Jenkins. I’ve also implemented security and quality checks using tools such as Trivy, SonarQube, and GitLeaks.
+
+>I’m now looking for an opportunity where I can leverage my production-support experience along with my DevOps and cloud skills to contribute to reliable and automated infrastructure and deployment processes.
 
 
 #### day-to-day job
