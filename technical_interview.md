@@ -144,3 +144,44 @@ Expected answer: Default AWS NLBs don't reserve static IPs — a new one gets pr
 > Since this is a Spring Boot app, I'd also check the JVM heap metrics through actuator/Micrometer to see if the heap itself is what's climbing, or if it's something outside the JVM heap, like native memory or too many open connections being held. I'd correlate the timing of the climb with anything recent — a new deployment, a config change, or a traffic pattern shift — to narrow down if this started after a specific change.
 
 > Based on all that, I'd decide between two paths — if it really is a genuine leak in the application code, that needs an actual code fix, not just more memory. But if it's legitimate increased load that the current resource limits just can't handle, then raising the memory limits would be the right call. I only raise limits as a real fix when the usage pattern actually supports that being the right call, not as a way to avoid investigating further.
+
+**1. OS patching automation — Ansible**
+
+“One example is OS patching. We had to perform patching activities across multiple production servers, and doing it manually was time-consuming and prone to inconsistency. I used Ansible to automate the patching workflow across 40+ servers. The playbook handled pre-checks, package updates, service validation, and post-patch health checks. This helped reduce manual effort and made the process more consistent.”
+
+**If they ask what pre-checks you performed:**
+
+Disk space
+Server connectivity
+OS/version information
+Running services
+Package/update status
+Application/service health after patching
+
+**2. Production server health checks — Python**
+
+“I also automated production server health checks using Python. Instead of manually checking multiple servers, I created scripts to collect information such as CPU and memory utilization, disk usage, running services, and connectivity. The output helped us quickly identify servers that required attention before they caused an incident.”
+
+This connects well with your production-support / monitoring background.
+
+**3. Access provisioning — Ansible/Python**
+
+“Another repetitive task was access provisioning. For certain standard server-access requests, I used automation with Ansible and Python to perform predefined configuration steps across multiple servers. The automation reduced the number of manual steps and helped maintain consistency while following the required access and approval process.”
+
+Important: Don't say your script bypassed approvals. Say “after the required approval” or “for approved requests.”
+
+**4. Troubleshooting / service validation — Python + Ansible**
+
+“During production support, I also used automation for troubleshooting workflows. For example, when a server or application service had an issue, instead of running the same commands manually on every server, I used Python or Ansible to collect service status, logs, disk and memory information, connectivity details, and other diagnostic information. This gave us a standardized troubleshooting output and helped speed up initial investigation.”
+
+This is particularly good because it connects your P1/P2 incident-support experience with DevOps automation.
+
+Your polished interview answer
+
+You can combine all four into your original paragraph:
+
+Automation Interview Answer
+
+Automation is another important part of my work. Whenever I identify a repetitive operational task, I look for ways to automate it using Python, Bash, or Ansible. For example, in production, I have used Ansible to automate OS patching activities across multiple servers, including pre-checks, patch installation, service validation, and post-patch health checks. I have also used Python scripts to automate server health checks such as CPU, memory, disk usage, service status, and connectivity checks. For approved access-provisioning requests, I have used automation to perform standard configuration steps consistently across servers. Additionally, during production incidents, I have used Python and Ansible to automate troubleshooting and diagnostic checks, helping collect logs and system information quickly instead of performing the same commands manually on multiple servers. These automations helped reduce repetitive manual work, improve consistency, and speed up operational activities.
+
+Interview tip: If these are based on your actual work, be ready for follow-ups like “Show me the Ansible playbook structure,” “What modules did you use?”, “How did you handle failed servers?”, “How did you make the playbook idempotent?” and “What did your Python script actually do?” Those are very likely DevOps interviewer follow-ups.**
